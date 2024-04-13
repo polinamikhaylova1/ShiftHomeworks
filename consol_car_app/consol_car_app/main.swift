@@ -22,11 +22,9 @@ struct Car {
     }
 }
 
-// Класс, управляющий приложением
 class CarManager {
     var cars: [Car] = []
     
-    // Функция добавления нового автомобиля
     func addCar() {
         print("Введите марку автомобиля:")
         let manufacture = readLine() ?? ""
@@ -55,7 +53,6 @@ class CarManager {
         print("Автомобиль успешно добавлен!")
     }
     
-    // Функция вывода списка всех автомобилей
     func listAllCars() {
         if cars.isEmpty {
             print("Список автомобилей пуст")
@@ -67,7 +64,6 @@ class CarManager {
         }
     }
     
-    // Функция вывода списка автомобилей с использованием фильтра по типу кузова
     func listCarsByBodyType() {
         print("Введите тип кузова для фильтрации:")
         print("Доступные типы кузова:")
