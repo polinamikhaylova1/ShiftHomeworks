@@ -127,4 +127,3 @@ class CarManager {
 }
 let carManager = CarManager()
 carManager.run()
-
