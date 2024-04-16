@@ -1,72 +1,61 @@
 import Foundation
 
-enum BodyType: String, CaseIterable{
-    case sedan = "Седан"
-    case hatchback = "Хэтчбек"
-    case suv = "Внедорожник"
-    case coupe = "Купе"
-    case convertible = "Кабриолет"
-}
 
-struct Car {
-    var manufacture: String
-    var model: String
-    var body: BodyType
-    var yearOfIssue: Int
-    
-    init(manufacture: String, model: String, body: BodyType, yearOfIssue:Int) {
-        self.manufacture = manufacture
-        self.model = model
-        self.body = body
-        self.yearOfIssue = yearOfIssue
-    }
-}
 
 class CarManager {
     var cars: [Car] = []
     
     func addCar() {
-        print("Введите марку автомобиля:")
+        print(inputStrings.inputManufacture.rawValue)
         let manufacture = readLine() ?? ""
         
-        print("Введите модель автомобиля:")
+        print(inputStrings.inputModel.rawValue)
         let model = readLine() ?? ""
         
-        print("Введите тип кузова автомобиля:")
+        print(infoStrings.bodyTypeAvailable.rawValue)
+        print(BodyType.coupe.rawValue, BodyType.sedan.rawValue, BodyType.hatchback.rawValue, BodyType.suv.rawValue,BodyType.coupe.rawValue, BodyType.convertible.rawValue)
+        print(inputStrings.inputBodyType.rawValue)
         
         var body: BodyType?
         repeat {
             if let userInput = readLine(), let selectedBodyType = BodyType(rawValue: userInput) {
                 body = selectedBodyType
             }
+            else {
+                print(errorStrings.errorInputBodyType.rawValue)
+            }
         } while body == nil
         
         guard let selectedBody = body else { return }
         
-        print("Введите год выпуска автомобиля:")
+        print(inputStrings.inputYearOfIssue.rawValue)
         
         guard let yearOfIssue = readLine(), let yearOfIssue = Int(yearOfIssue) else {return}
         
+        print(inputStrings.inputcarNumber.rawValue)
+        let carNumber = readLine() ?? ""
         
-        let car = Car(manufacture: manufacture, model: model, body: selectedBody, yearOfIssue:yearOfIssue )
+        
+        let car = Car(manufacture: manufacture, model: model, body: selectedBody, yearOfIssue:yearOfIssue,carNumber:carNumber )
         cars.append(car)
-        print("Автомобиль успешно добавлен!")
+        print(infoStrings.carAdded.rawValue)
     }
     
     func listAllCars() {
         if cars.isEmpty {
-            print("Список автомобилей пуст")
+            print(errorStrings.listEmpty.rawValue)
         } else {
-            print("Список всех автомобилей:")
+            print(infoStrings.listOfCars.rawValue)
             for car in cars {
-                print("\(car.manufacture) \(car.model) \(car.body) \(car.yearOfIssue)")
+                print("\(car.manufacture) \(car.model) \(car.body) \(car.yearOfIssue)\(car.carNumber)")
             }
         }
     }
     
     func listCarsByBodyType() {
-        print("Введите тип кузова для фильтрации:")
-        print("Доступные типы кузова:")
+        print(infoStrings.bodyTypeAvailable.rawValue)
+        print(inputStrings.inputBodyType.rawValue)
+        
         for bodyType in BodyType.allCases {
             print("\(bodyType.rawValue)")
         }
@@ -83,9 +72,9 @@ class CarManager {
         let filteredCars = cars.filter { $0.body == selectedBody }
         
         if filteredCars.isEmpty {
-            print("Нет автомобилей с указанным типом кузова")
+            print(errorStrings.filteredCarsEmpty.rawValue)
         } else {
-            print("Список автомобилей с типом кузова '\(selectedBody.rawValue)':")
+            print(infoStrings.listFilteredCars.rawValue,(selectedBody.rawValue))
             for car in filteredCars {
                 print("\(car.manufacture) \(car.model)")
             }
@@ -96,11 +85,11 @@ class CarManager {
     func run() {
         var shouldQuit = false
         while !shouldQuit {
-            print("\nВыберите действие:")
-            print("1. Добавить новый автомобиль")
-            print("2. Вывести список всех автомобилей")
-            print("3. Вывести список автомобилей по типу кузова")
-            print("4. Выйти")
+            print(MenuOption.selectAction.rawValue)
+            print(MenuOption.addCar.rawValue)
+            print(MenuOption.printlistAllCars.rawValue)
+            print(MenuOption.printlistCarsByBodyType.rawValue)
+            print(MenuOption.exit.rawValue)
             
             if let choice = readLine(), let option = Int(choice) {
                 switch option {
@@ -113,10 +102,10 @@ class CarManager {
                 case 4:
                     shouldQuit = true
                 default:
-                    print("Некорректный ввод. Пожалуйста, выберите число от 1 до 4")
+                    print(errorStrings.error.rawValue)
                     }
                 } else {
-                    print("Некорректный ввод. Пожалуйста, выберите число от 1 до 4")
+                    print(errorStrings.error.rawValue)
                 }
             }
         }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7A20C4532BCAFA9B0080F120 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C4522BCAFA9B0080F120 /* main.swift */; };
+		7A20C45A2BCE34920080F120 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C4592BCE34920080F120 /* BodyType.swift */; };
+		7A20C45C2BCE34B40080F120 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C45B2BCE34B40080F120 /* Car.swift */; };
+		7A20C45E2BCE3BE90080F120 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C45D2BCE3BE90080F120 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		7A20C44F2BCAFA9B0080F120 /* consol_car_app */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = consol_car_app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A20C4522BCAFA9B0080F120 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		7A20C4592BCE34920080F120 /* BodyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyType.swift; sourceTree = "<group>"; };
+		7A20C45B2BCE34B40080F120 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		7A20C45D2BCE3BE90080F120 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				7A20C4522BCAFA9B0080F120 /* main.swift */,
+				7A20C45D2BCE3BE90080F120 /* Strings.swift */,
+				7A20C45B2BCE34B40080F120 /* Car.swift */,
+				7A20C4592BCE34920080F120 /* BodyType.swift */,
 			);
 			path = consol_car_app;
 			sourceTree = "<group>";
@@ -121,6 +130,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A20C4532BCAFA9B0080F120 /* main.swift in Sources */,
+				7A20C45A2BCE34920080F120 /* BodyType.swift in Sources */,
+				7A20C45E2BCE3BE90080F120 /* Strings.swift in Sources */,
+				7A20C45C2BCE34B40080F120 /* Car.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
