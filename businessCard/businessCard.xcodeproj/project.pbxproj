@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		7AA774AB2BDE45AB001EBACB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774AA2BDE45AB001EBACB /* AppDelegate.swift */; };
 		7AA774AD2BDE45AB001EBACB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774AC2BDE45AB001EBACB /* SceneDelegate.swift */; };
-		7AA774AF2BDE45AB001EBACB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774AE2BDE45AB001EBACB /* ViewController.swift */; };
+		7AA774AF2BDE45AB001EBACB /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774AE2BDE45AB001EBACB /* BioViewController.swift */; };
 		7AA774B22BDE45AB001EBACB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7AA774B12BDE45AB001EBACB /* Base */; };
 		7AA774B42BDE45AD001EBACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AA774B32BDE45AD001EBACB /* Assets.xcassets */; };
 		7AA774B72BDE45AD001EBACB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7AA774B62BDE45AD001EBACB /* Base */; };
+		7AA774BF2BDE4690001EBACB /* DevInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774BE2BDE4690001EBACB /* DevInfoViewController.swift */; };
+		7AA774C12BDE5C54001EBACB /* HobbyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774C02BDE5C53001EBACB /* HobbyInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7AA774A72BDE45AB001EBACB /* businessCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = businessCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA774AA2BDE45AB001EBACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AA774AC2BDE45AB001EBACB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7AA774AE2BDE45AB001EBACB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7AA774AE2BDE45AB001EBACB /* BioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioViewController.swift; sourceTree = "<group>"; };
 		7AA774B12BDE45AB001EBACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7AA774B32BDE45AD001EBACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AA774B62BDE45AD001EBACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AA774B82BDE45AD001EBACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AA774BE2BDE4690001EBACB /* DevInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevInfoViewController.swift; sourceTree = "<group>"; };
+		7AA774C02BDE5C53001EBACB /* HobbyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				7AA774AA2BDE45AB001EBACB /* AppDelegate.swift */,
+				7AA774C02BDE5C53001EBACB /* HobbyInfoViewController.swift */,
 				7AA774AC2BDE45AB001EBACB /* SceneDelegate.swift */,
-				7AA774AE2BDE45AB001EBACB /* ViewController.swift */,
+				7AA774AE2BDE45AB001EBACB /* BioViewController.swift */,
 				7AA774B02BDE45AB001EBACB /* Main.storyboard */,
+				7AA774BE2BDE4690001EBACB /* DevInfoViewController.swift */,
 				7AA774B32BDE45AD001EBACB /* Assets.xcassets */,
 				7AA774B52BDE45AD001EBACB /* LaunchScreen.storyboard */,
 				7AA774B82BDE45AD001EBACB /* Info.plist */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AA774AF2BDE45AB001EBACB /* ViewController.swift in Sources */,
+				7AA774C12BDE5C54001EBACB /* HobbyInfoViewController.swift in Sources */,
+				7AA774BF2BDE4690001EBACB /* DevInfoViewController.swift in Sources */,
+				7AA774AF2BDE45AB001EBACB /* BioViewController.swift in Sources */,
 				7AA774AB2BDE45AB001EBACB /* AppDelegate.swift in Sources */,
 				7AA774AD2BDE45AB001EBACB /* SceneDelegate.swift in Sources */,
 			);
