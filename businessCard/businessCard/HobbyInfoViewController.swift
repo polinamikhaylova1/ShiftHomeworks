@@ -3,7 +3,7 @@ import UIKit
 class HobbyInfoViewController: UIViewController {
     
     private lazy var hobbyInfoView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, photoLabel,photo1Label,sportLabel,sport1Label,backButton,])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, photoLabel,photoText,sportLabel,sportText])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -25,52 +25,20 @@ class HobbyInfoViewController: UIViewController {
         setuphobbyInfoViewConstrains()
         view.backgroundColor = .orange
     }
+    struct LabelStyle {
+        static let font = UIFont.systemFont(ofSize: 14)
+        static let numberOfLines = 0
+    }
     
-    private let titleLabel: UILabel =  {
-        let label = UILabel(frame: .zero)
-        label.text =  "О моих хобби"
-        label.font = UIFont.systemFont(ofSize: 26, weight: .bold)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    let titleLabel = TextSettings.makeTitle(withText: "О моих хобби")
     
-    private let photoLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.text = "Фотография"
-        label.font = .boldSystemFont(ofSize: 18)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    private let photo1Label: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.text = "Я занимаюсь фотографией около 6 лет.\nНа данный момоент работаю руководителем фотомастерской в СУНЦ НГУ, в школе, которую сама закончила.\nМой профиль - портретная фотосъемка, но я так же очень люблю фотографировать в путешествиях"
-        label.font = .systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    private let sportLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.text = "Спорт"
-        label.font = .boldSystemFont(ofSize: 18)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    private let sport1Label: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.text = "Занимаюсь спортом всю свою жизнь: в детстве это была хореографическая школа, сейчас я хожу в тренажерный зал 2-3 раза в неделю. Спорт разбавляет мой сидячий образ жизни и наполняет меня энергией."
-        label.font = .systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    let photoLabel = TextSettings.makeLabel(withText: "Фотография")
+    
+    let photoText = TextSettings.makeLabelHobbyDescripption(withText: "Я занимаюсь фотографией около 6 лет.\nНа данный момоент работаю руководителем фотомастерской в СУНЦ НГУ, в школе, которую сама закончила.\nМой профиль - портретная фотосъемка, но я так же очень люблю фотографировать в путешествиях")
+    
+    let sportLabel = TextSettings.makeLabel(withText: "Спорт")
+    
+    let sportText = TextSettings.makeLabelHobbyDescripption(withText: "Занимаюсь спортом всю свою жизнь: в детстве это была хореографическая школа, сейчас я хожу в тренажерный зал 2-3 раза в неделю. Спорт разбавляет мой сидячий образ жизни и наполняет меня энергией.")
     
     private func setuphobbyInfoViewConstrains() {
         hobbyInfoView.layoutMargins = .init(top: 5, left: 0, bottom:5, right:0)
@@ -82,25 +50,12 @@ class HobbyInfoViewController: UIViewController {
             
         ])
     }
-    private let backButton: UIButton = {
-        let button = UIButton (type: .system)
-        button.setTitle("Назад", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 8
-        button.backgroundColor = .red
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        return button
-    }()
     
     private func titleViewCostrains() {
         NSLayoutConstraint.activate([
-                titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -310) 
-    
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             ])
-    }
-    @objc private func backButtonTapped() {
-        dismiss(animated: true, completion: nil)
     }
 }

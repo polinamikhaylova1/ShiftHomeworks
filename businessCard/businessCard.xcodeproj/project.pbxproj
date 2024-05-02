@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0241BD2BE3DE6300C049AA /* TextSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0241BC2BE3DE6300C049AA /* TextSettings.swift */; };
 		7AA774AB2BDE45AB001EBACB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774AA2BDE45AB001EBACB /* AppDelegate.swift */; };
 		7AA774AD2BDE45AB001EBACB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774AC2BDE45AB001EBACB /* SceneDelegate.swift */; };
 		7AA774AF2BDE45AB001EBACB /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA774AE2BDE45AB001EBACB /* BioViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A0241BC2BE3DE6300C049AA /* TextSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSettings.swift; sourceTree = "<group>"; };
 		7AA774A72BDE45AB001EBACB /* businessCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = businessCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA774AA2BDE45AB001EBACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AA774AC2BDE45AB001EBACB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,11 +63,12 @@
 			isa = PBXGroup;
 			children = (
 				7AA774AA2BDE45AB001EBACB /* AppDelegate.swift */,
-				7AA774C02BDE5C53001EBACB /* HobbyInfoViewController.swift */,
 				7AA774AC2BDE45AB001EBACB /* SceneDelegate.swift */,
-				7AA774AE2BDE45AB001EBACB /* BioViewController.swift */,
-				7AA774B02BDE45AB001EBACB /* Main.storyboard */,
+				7AA774C02BDE5C53001EBACB /* HobbyInfoViewController.swift */,
 				7AA774BE2BDE4690001EBACB /* DevInfoViewController.swift */,
+				7AA774AE2BDE45AB001EBACB /* BioViewController.swift */,
+				7A0241BC2BE3DE6300C049AA /* TextSettings.swift */,
+				7AA774B02BDE45AB001EBACB /* Main.storyboard */,
 				7AA774B32BDE45AD001EBACB /* Assets.xcassets */,
 				7AA774B52BDE45AD001EBACB /* LaunchScreen.storyboard */,
 				7AA774B82BDE45AD001EBACB /* Info.plist */,
@@ -149,6 +152,7 @@
 				7AA774AF2BDE45AB001EBACB /* BioViewController.swift in Sources */,
 				7AA774AB2BDE45AB001EBACB /* AppDelegate.swift in Sources */,
 				7AA774AD2BDE45AB001EBACB /* SceneDelegate.swift in Sources */,
+				7A0241BD2BE3DE6300C049AA /* TextSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
