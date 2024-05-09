@@ -21,7 +21,7 @@ class ModalViewController: UIViewController {
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Хороших выходных!"
-        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold) // Настройка размера и жирности шрифта
+        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         titleLabel.textColor = .black
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

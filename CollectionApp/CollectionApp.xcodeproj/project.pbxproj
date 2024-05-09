@@ -52,10 +52,6 @@
 		7A46BE3C2BEA0FD80073226B = {
 			isa = PBXGroup;
 			children = (
-				7A46BE722BEBBE2D0073226B /* CollectionView.swift */,
-				7A46BE6E2BEBA9490073226B /* Source.swift */,
-				7A46BE6C2BEBA2FC0073226B /* Item.swift */,
-				7A46BE6A2BEBA1A70073226B /* ModalViewController.swift */,
 				7A46BE472BEA0FD80073226B /* CollectionApp */,
 				7A46BE462BEA0FD80073226B /* Products */,
 			);
@@ -72,10 +68,13 @@
 		7A46BE472BEA0FD80073226B /* CollectionApp */ = {
 			isa = PBXGroup;
 			children = (
-				7A46BE482BEA0FD80073226B /* AppDelegate.swift */,
-				7A46BE4A2BEA0FD80073226B /* SceneDelegate.swift */,
+				7A6012832BECD97F000F4FA8 /* Settings */,
 				7A46BE4C2BEA0FD80073226B /* CollectionViewController.swift */,
 				7A46BE702BEBAFCC0073226B /* CollectionViewDataSource.swift */,
+				7A46BE722BEBBE2D0073226B /* CollectionView.swift */,
+				7A46BE6E2BEBA9490073226B /* Source.swift */,
+				7A46BE6C2BEBA2FC0073226B /* Item.swift */,
+				7A46BE6A2BEBA1A70073226B /* ModalViewController.swift */,
 				7A46BE682BEA24400073226B /* DetailViewController.swift */,
 				7A46BE662BEA24030073226B /* ItemCell.swift */,
 				7A46BE512BEA0FDA0073226B /* Assets.xcassets */,
@@ -83,6 +82,15 @@
 				7A46BE562BEA0FDA0073226B /* Info.plist */,
 			);
 			path = CollectionApp;
+			sourceTree = "<group>";
+		};
+		7A6012832BECD97F000F4FA8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7A46BE482BEA0FD80073226B /* AppDelegate.swift */,
+				7A46BE4A2BEA0FD80073226B /* SceneDelegate.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
