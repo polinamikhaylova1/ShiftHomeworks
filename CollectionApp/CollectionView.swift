@@ -5,7 +5,7 @@ final class CollectionView: UIView {
     lazy var headerView: UIView = {
             let headerView = UIView()
             headerView.translatesAutoresizingMaskIntoConstraints = false
-                
+        
                 let label = UILabel()
                 label.text = "Стартерпак на майские"
                 label.textColor = .black
@@ -25,7 +25,7 @@ final class CollectionView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
         collectionView.isUserInteractionEnabled = true
         collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.identifier)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -37,7 +37,7 @@ final class CollectionView: UIView {
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.itemSize = CGSize(width: 120, height: 120)
         return layout
     }
     
@@ -58,7 +58,6 @@ final class CollectionView: UIView {
         return layout
     }
     
-    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -69,7 +68,6 @@ final class CollectionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private Methods
     private func setupUI() {
         addSubview(collectionView)
         addSubview(headerView)

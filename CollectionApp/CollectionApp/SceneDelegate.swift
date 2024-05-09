@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let collectionViewController = CollectionViewController()
             let navigationController = UINavigationController(rootViewController: collectionViewController)
-            let dataSource = CollectionViewDataSource(navigationController: navigationController)
+            _ = CollectionViewDataSource(navigationController: navigationController)
             
             window = UIWindow(windowScene: windowScene)
             window?.rootViewController = navigationController

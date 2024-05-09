@@ -1,6 +1,5 @@
 import UIKit
 
-
 class Item {
     var imageName: String
     var labelText: String

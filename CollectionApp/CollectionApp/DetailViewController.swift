@@ -20,19 +20,24 @@ class DetailViewController: UIViewController {
             view.addSubview(descriptionLabel)
                     
             NSLayoutConstraint.activate([
-                descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+                descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
                 descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                 descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
                 ])
         }
+        view.addSubview(button)
+        constraintView()
         
+    }
+    
+    let button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Нажми, пикник есть в планах на твои майские", for: .normal)
         button.addTarget(self, action: #selector(showModal), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(button)
-        
+        return button
+    }()
+    func constraintView() {
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -40)

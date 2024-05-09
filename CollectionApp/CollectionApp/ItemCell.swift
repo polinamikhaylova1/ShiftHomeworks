@@ -26,11 +26,11 @@ class ItemCell: UICollectionViewCell {
     }
     
     func setupUI() {
-        layer.cornerRadius = 8
         layer.masksToBounds = true
         contentView.addSubview(imageView)
         contentView.addSubview(label)
         contentView.layer.borderWidth = 1
+        contentView.layer.cornerRadius = 8
         contentView.layer.borderColor = UIColor.black.cgColor
         self.clipsToBounds = true
         NSLayoutConstraint.activate([

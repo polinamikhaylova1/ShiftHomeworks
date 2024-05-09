@@ -9,10 +9,6 @@ final class CollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture))
-        contentView.collectionView.addGestureRecognizer(longPressGesture)
-        
         self.items = dataSource.items
 
     }
@@ -29,7 +25,7 @@ final class CollectionViewController: UIViewController {
         view.setDataSource(dataSource)
         view.collectionView.delegate = self
         view.collectionView.dragInteractionEnabled = true
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .white
         return view
     }()
     
@@ -45,21 +41,7 @@ final class CollectionViewController: UIViewController {
                 
         view.addSubview(collectionView)
     }
-    @objc private func longPressGesture(_ gesture: UILongPressGestureRecognizer) {
-        switch(gesture.state) {
-        case .began:
-            guard let selectedIndexPath = contentView.collectionView.indexPathForItem(at: gesture.location(in: contentView.collectionView)) else {
-                break
-            }
-            contentView.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-        case .changed:
-            contentView.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-        case .ended:
-            contentView.collectionView.endInteractiveMovement()
-        default:
-            contentView.collectionView.cancelInteractiveMovement()
-        }
-    }
+
 }
 
 extension CollectionViewController: UICollectionViewDelegate {
