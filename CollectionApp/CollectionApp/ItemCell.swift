@@ -15,6 +15,8 @@ class ItemCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.backgroundColor = .white
         return label
     }()
     
@@ -35,9 +37,9 @@ class ItemCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor), // Высота изображения равна ширине (чтобы был квадрат)
+            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
                    
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8), // Расстояние между изображением и текстом
+//            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)

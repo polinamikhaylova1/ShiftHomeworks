@@ -5,12 +5,16 @@ final class CollectionViewController: UIViewController {
     
     var collectionView: UICollectionView!
     
+    var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture))
         contentView.collectionView.addGestureRecognizer(longPressGesture)
+        
+        self.items = dataSource.items
+
     }
     
     override func loadView() {
@@ -38,7 +42,7 @@ final class CollectionViewController: UIViewController {
         
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        
+                
         view.addSubview(collectionView)
     }
     @objc private func longPressGesture(_ gesture: UILongPressGestureRecognizer) {
@@ -61,7 +65,7 @@ final class CollectionViewController: UIViewController {
 extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailViewController = DetailViewController()
-        
+        detailViewController.item = items[indexPath.item]
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

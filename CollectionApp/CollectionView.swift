@@ -2,11 +2,30 @@ import UIKit
 
 final class CollectionView: UIView {
     
+    lazy var headerView: UIView = {
+            let headerView = UIView()
+            headerView.translatesAutoresizingMaskIntoConstraints = false
+                
+                let label = UILabel()
+                label.text = "Стартерпак на майские"
+                label.textColor = .black
+                label.font = UIFont.boldSystemFont(ofSize: 20)
+                label.translatesAutoresizingMaskIntoConstraints = false
+                headerView.addSubview(label)
+                
+                NSLayoutConstraint.activate([
+                    label.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                    label.centerYAnchor.constraint(equalTo: headerView.bottomAnchor, constant:-25)
+                ])
+                
+                return headerView
+        }()
+    
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
         collectionView.isUserInteractionEnabled = true
         collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.identifier)
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -53,12 +72,17 @@ final class CollectionView: UIView {
     // MARK: - Private Methods
     private func setupUI() {
         addSubview(collectionView)
+        addSubview(headerView)
         setConstraints()
     }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),

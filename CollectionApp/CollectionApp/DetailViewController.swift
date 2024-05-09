@@ -10,6 +10,17 @@ class DetailViewController: UIViewController {
         
         if let item = item {
             title = item.labelText
+            
+            let descriptionLabel = UILabel()
+            descriptionLabel.text = item.descriptionText
+            descriptionLabel.numberOfLines = 0 // Разрешаем перенос строк
+            descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(descriptionLabel)
+                    
+            NSLayoutConstraint.activate([
+                    descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    descriptionLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50)
+                ])
         }
         
         let button = UIButton(type: .system)
