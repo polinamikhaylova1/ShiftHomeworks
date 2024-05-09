@@ -11,11 +11,22 @@ class ModalViewController: UIViewController {
         closeButton.addTarget(self, action: #selector(closeModal), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.setTitleColor(.black, for: .normal)
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Хороших выходных!"
+        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold) // Настройка размера и жирности шрифта
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .center
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+                
+        view.addSubview(titleLabel)
 
         
         view.addSubview(closeButton)
         
         NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             closeButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])

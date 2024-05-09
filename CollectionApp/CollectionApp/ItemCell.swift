@@ -26,7 +26,7 @@ class ItemCell: UICollectionViewCell {
     }
     
     func setupUI() {
-        layer.cornerRadius = 10
+        layer.cornerRadius = 8
         layer.masksToBounds = true
         contentView.addSubview(imageView)
         contentView.addSubview(label)
@@ -37,7 +37,8 @@ class ItemCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.8),
                    
 //            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
