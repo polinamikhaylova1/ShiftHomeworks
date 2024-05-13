@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
     
     let button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Нажми, пикник есть в планах на твои майские", for: .normal)
+        button.setTitle("Нажми,если пикник есть в планах на твои майские", for: .normal)
         button.addTarget(self, action: #selector(showModal), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

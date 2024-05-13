@@ -1,9 +1,9 @@
 import UIKit
 
 class Item {
-    var imageName: String
-    var labelText: String
-    var descriptionText: String
+    let imageName: String
+    let labelText: String
+    let descriptionText: String
     
     init(imageName: String, labelText: String, descriptionText: String) {
         self.imageName = imageName

@@ -11,7 +11,7 @@ class ItemCell: UICollectionViewCell {
         return imageView
     }()
     
-    let label: UILabel = {
+    let labelCaption: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +28,7 @@ class ItemCell: UICollectionViewCell {
     func setupUI() {
         layer.masksToBounds = true
         contentView.addSubview(imageView)
-        contentView.addSubview(label)
+        contentView.addSubview(labelCaption)
         contentView.layer.borderWidth = 1
         contentView.layer.cornerRadius = 8
         contentView.layer.borderColor = UIColor.black.cgColor
@@ -39,11 +39,9 @@ class ItemCell: UICollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.8),
-                   
-//            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            labelCaption.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            labelCaption.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            labelCaption.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
                     
             ])
         

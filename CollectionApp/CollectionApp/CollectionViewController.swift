@@ -3,23 +3,17 @@ import UIKit
 
 final class CollectionViewController: UIViewController {
     
-    var collectionView: UICollectionView!
-    
-    var items = [Item]()
+    private var collectionView: UICollectionView?
+    private let dataSource = CollectionViewDataSource(navigationController: nil)
+    private var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.items = dataSource.items
-
+        self.items = Source.allItems()
     }
-    
     override func loadView() {
         view = contentView
     }
-    
-    let dataSource = CollectionViewDataSource(navigationController: nil)
-
-    
     private lazy var contentView: CollectionView = {
         let view = CollectionView()
         view.setDataSource(dataSource)
@@ -32,14 +26,11 @@ final class CollectionViewController: UIViewController {
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.register(ItemCell.self, forCellWithReuseIdentifier: "ItemCell")
-        collectionView.backgroundColor = .white
-        
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
-                
-        view.addSubview(collectionView)
+        collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView?.register(ItemCell.self, forCellWithReuseIdentifier: "ItemCell")
+        collectionView?.backgroundColor = .white
+        collectionView?.dataSource = dataSource
+        collectionView?.delegate = self
     }
 
 }

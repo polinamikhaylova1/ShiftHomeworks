@@ -15,11 +15,12 @@ struct Source {
     ]
     }
     
-    static func allPhotosInOrder() -> [Photo] {
-        return allPhotos().sorted { $0.id < $1.id }
+    static func allItems() -> [Item] {
+        return allPhotos().map { photo in
+            Item(imageName: photo.imageName, labelText: photo.imageName, descriptionText: photo.descriptionText)
+        }
     }
 }
-
 struct Photo {
     let id: Int
     let imageName : String
