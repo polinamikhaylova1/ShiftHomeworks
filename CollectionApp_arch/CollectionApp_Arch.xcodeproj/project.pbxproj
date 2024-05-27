@@ -23,6 +23,7 @@
 		7A46BE6F2BEBA9490073226B /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A46BE6E2BEBA9490073226B /* Source.swift */; };
 		7A46BE712BEBAFCC0073226B /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A46BE702BEBAFCC0073226B /* CollectionViewDataSource.swift */; };
 		7A46BE732BEBBE2D0073226B /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A46BE722BEBBE2D0073226B /* CollectionView.swift */; };
+		7ACDA81D2C0448FD005720EC /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDA81C2C0448FD005720EC /* ItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		7A46BE6E2BEBA9490073226B /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		7A46BE702BEBAFCC0073226B /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7A46BE722BEBBE2D0073226B /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		7ACDA81C2C0448FD005720EC /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +102,9 @@
 				7A46BE4C2BEA0FD80073226B /* CollectionViewController.swift */,
 				7A46BE702BEBAFCC0073226B /* CollectionViewDataSource.swift */,
 				7A46BE722BEBBE2D0073226B /* CollectionView.swift */,
-				7A46BE6E2BEBA9490073226B /* Source.swift */,
-				7A46BE6C2BEBA2FC0073226B /* Item.swift */,
+				7ACDA81E2C044BDF005720EC /* Item */,
 				7A3E1BC22BF892E900C96810 /* ModalView */,
 				7A3E1BB92BF8910500C96810 /* DetailView */,
-				7A46BE662BEA24030073226B /* ItemCell.swift */,
 				7A46BE512BEA0FDA0073226B /* Assets.xcassets */,
 				7A46BE532BEA0FDA0073226B /* LaunchScreen.storyboard */,
 				7A46BE562BEA0FDA0073226B /* Info.plist */,
@@ -119,6 +119,17 @@
 				7A46BE4A2BEA0FD80073226B /* SceneDelegate.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		7ACDA81E2C044BDF005720EC /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				7A46BE6E2BEBA9490073226B /* Source.swift */,
+				7ACDA81C2C0448FD005720EC /* ItemViewModel.swift */,
+				7A46BE6C2BEBA2FC0073226B /* Item.swift */,
+				7A46BE662BEA24030073226B /* ItemCell.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 				7A3E1BBB2BF8912300C96810 /* DetailPresenter.swift in Sources */,
 				7A46BE712BEBAFCC0073226B /* CollectionViewDataSource.swift in Sources */,
 				7A46BE492BEA0FD80073226B /* AppDelegate.swift in Sources */,
+				7ACDA81D2C0448FD005720EC /* ItemViewModel.swift in Sources */,
 				7A46BE732BEBBE2D0073226B /* CollectionView.swift in Sources */,
 				7A46BE6D2BEBA2FC0073226B /* Item.swift in Sources */,
 				7A46BE6B2BEBA1A70073226B /* ModalViewController.swift in Sources */,

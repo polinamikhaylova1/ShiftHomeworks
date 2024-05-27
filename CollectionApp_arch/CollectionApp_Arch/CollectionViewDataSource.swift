@@ -2,11 +2,11 @@ import UIKit
 
 final class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    weak var navigationController: UINavigationController?
-    private var items: [Item] = []
+    private var items: [ItemViewModel] = []
 
     init(navigationController: UINavigationController?) {
-        self.items = Source.allItems()
+        let itemList = Source.allItems()
+        self.items = itemList.map { ItemViewModel(from: $0) }
         super.init()
     }
 
@@ -18,9 +18,8 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.identifier, for: indexPath) as? ItemCell else {
             fatalError("невозможно создать ячейку с идентификатором \(ItemCell.identifier)")
         }
-        let item = items[indexPath.item]
-        cell.imageView.image = UIImage(named: item.imageName)
-        cell.labelCaption.text = item.labelText
+        let viewModel = items[indexPath.item]
+        cell.configure(with: viewModel)
         return cell
     }
     

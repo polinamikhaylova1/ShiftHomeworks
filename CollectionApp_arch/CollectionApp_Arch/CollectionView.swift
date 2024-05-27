@@ -2,6 +2,16 @@ import UIKit
 
 final class CollectionView: UIView {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     lazy var headerView: UIView = {
             let headerView = UIView()
             headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,14 +44,19 @@ final class CollectionView: UIView {
         collectionView.dataSource = dataSource
     }
     
-    private func createLayout() -> UICollectionViewLayout {
+    
+    
+}
+private extension CollectionView {
+    
+    func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 120, height: 120)
         return layout
     }
     
-    private func createCompositionalLayout() -> UICollectionViewLayout {
+    func createCompositionalLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
@@ -58,23 +73,8 @@ final class CollectionView: UIView {
         return layout
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
     
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupUI() {
-        addSubview(collectionView)
-        addSubview(headerView)
-        setConstraints()
-    }
-    
-    private func setConstraints() {
+    func setConstraints() {
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -85,5 +85,10 @@ final class CollectionView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+    func setupUI() {
+        addSubview(collectionView)
+        addSubview(headerView)
+        setConstraints()
     }
 }

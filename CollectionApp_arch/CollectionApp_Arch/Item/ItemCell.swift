@@ -4,6 +4,20 @@ class ItemCell: UICollectionViewCell {
     
     static let identifier = String(describing: ItemCell.self)
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    func configure(with viewModel: ItemViewModel) {
+        imageView.image = UIImage(named: viewModel.imageName)
+        labelCaption.text = viewModel.labelText
+    }
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -19,11 +33,6 @@ class ItemCell: UICollectionViewCell {
         label.backgroundColor = .white
         return label
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
     
     func setupUI() {
         layer.masksToBounds = true
@@ -42,11 +51,9 @@ class ItemCell: UICollectionViewCell {
             labelCaption.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             labelCaption.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             labelCaption.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-                    
-            ])
+            
+        ])
         
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
 }
