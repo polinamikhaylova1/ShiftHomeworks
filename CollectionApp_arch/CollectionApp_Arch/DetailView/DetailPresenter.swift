@@ -1,16 +1,16 @@
 import Foundation
 
-protocol DetailPresenter {
+protocol DetailPresenterProtocol {
     func viewDidLoad()
     func buttonTapped()
 }
 
-class DetailPresenterImpl: DetailPresenter {
+class DetailPresenter: DetailPresenterProtocol {
     
     weak var view: DetailView?
-    private let item: Item
+    private let item: ItemViewModel
     
-    init(view: DetailView, item: Item) {
+    init(view: DetailView, item: ItemViewModel) {
         self.view = view
         self.item = item
     }

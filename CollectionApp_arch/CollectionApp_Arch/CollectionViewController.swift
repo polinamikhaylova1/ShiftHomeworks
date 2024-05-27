@@ -5,12 +5,11 @@ final class CollectionViewController: UIViewController {
     
     private var collectionView: UICollectionView?
     private let dataSource = CollectionViewDataSource(navigationController: nil)
-    private var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.items = Source.allItems()
     }
+     
     override func loadView() {
         view = contentView
     }
@@ -37,12 +36,21 @@ final class CollectionViewController: UIViewController {
 
 extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let item = items[indexPath.item]
-            let detailViewController = DetailViewController()
-            let presenter = DetailPresenterImpl(view: detailViewController, item: item)
-            detailViewController.presenter = presenter
-            navigationController?.pushViewController(detailViewController, animated: true)
-        }
+        let item = dataSource.getItem(at: indexPath)
+        let detailViewController = createDetailViewController(for: item)
+        navigateToDetailViewController(detailViewController)
+    }
+    
+    private func createDetailViewController(for item: ItemViewModel) -> DetailViewController {
+        let detailViewController = DetailViewController()
+        let presenter = DetailPresenter(view: detailViewController, item: item)
+        detailViewController.presenter = presenter
+        return detailViewController
+    }
+        
+    private func navigateToDetailViewController(_ viewController: DetailViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 

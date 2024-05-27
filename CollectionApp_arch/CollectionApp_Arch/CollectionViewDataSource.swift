@@ -28,4 +28,11 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         let height: CGFloat = 180
         return CGSize(width: width, height: height)
     }
+    func getItem(at indexPath: IndexPath) -> ItemViewModel {
+        return items[indexPath.item]
+    }
+        
+    func getItems() -> [ItemViewModel] {
+        return items
+    }
 }
