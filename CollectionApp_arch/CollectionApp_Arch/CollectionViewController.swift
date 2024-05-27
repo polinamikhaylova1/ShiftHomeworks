@@ -6,6 +6,8 @@ final class CollectionViewController: UIViewController {
     private var collectionView: UICollectionView?
     private let dataSource = CollectionViewDataSource(navigationController: nil)
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -42,9 +44,8 @@ extension CollectionViewController: UICollectionViewDelegate {
     }
     
     private func createDetailViewController(for item: ItemViewModel) -> DetailViewController {
-        let detailViewController = DetailViewController()
-        let presenter = DetailPresenter(view: detailViewController, item: item)
-        detailViewController.presenter = presenter
+        let presenter = DetailPresenter(view: nil, item: item)
+        let detailViewController = DetailViewController(presenter: presenter)
         return detailViewController
     }
         

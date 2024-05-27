@@ -8,9 +8,18 @@ protocol DetailView: AnyObject {
 
 final class DetailViewController: UIViewController, DetailView {
     
-    var presenter: DetailPresenter?
+    private var presenter: DetailPresenter
     private var detailView = DetailOfItemsView()
     
+    init(presenter: DetailPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func loadView() {
         detailView = DetailOfItemsView()
         self.view = detailView
@@ -19,11 +28,13 @@ final class DetailViewController: UIViewController, DetailView {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailView.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        presenter?.viewDidLoad()
+        presenter.viewDidLoad()
+        presenter.view = self
+
     }
     
     @objc private func buttonTapped() {
-        presenter?.buttonTapped()
+        presenter.buttonTapped()
     }
     
     
@@ -41,7 +52,7 @@ extension DetailViewController {
     func showModal() {
         let message = Message(text: "Хороших выходных!")
         let viewModel = ModalViewModel(message: message)
-        let modalViewController = ModalViewController()
+        let modalViewController = ModalViewController(viewModel: viewModel)
         modalViewController.configure(with: viewModel)
         modalViewController.modalPresentationStyle = .overCurrentContext
         present(modalViewController, animated: true, completion: nil)
