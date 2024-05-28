@@ -18,7 +18,6 @@
 		7ACDA8462C049C67005720EC /* CarDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDA8452C049C67005720EC /* CarDetailsModel.swift */; };
 		7ACDA8482C049CFD005720EC /* CarDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDA8472C049CFD005720EC /* CarDetailsPresenter.swift */; };
 		7ACDA84C2C04A4B8005720EC /* CarDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDA84B2C04A4B8005720EC /* CarDataStore.swift */; };
-		7ACDA8502C04A99F005720EC /* CarDetailsPriceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDA84F2C04A99F005720EC /* CarDetailsPriceCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		7ACDA8452C049C67005720EC /* CarDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsModel.swift; sourceTree = "<group>"; };
 		7ACDA8472C049CFD005720EC /* CarDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsPresenter.swift; sourceTree = "<group>"; };
 		7ACDA84B2C04A4B8005720EC /* CarDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDataStore.swift; sourceTree = "<group>"; };
-		7ACDA84F2C04A99F005720EC /* CarDetailsPriceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsPriceCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +93,6 @@
 			children = (
 				7ACDA8432C049BF9005720EC /* CarDetailsViewController.swift */,
 				7ACDA8472C049CFD005720EC /* CarDetailsPresenter.swift */,
-				7ACDA84F2C04A99F005720EC /* CarDetailsPriceCalculator.swift */,
 				7ACDA8452C049C67005720EC /* CarDetailsModel.swift */,
 			);
 			name = Details;
@@ -176,7 +173,6 @@
 				7ACDA8402C049818005720EC /* CarBrandsModel.swift in Sources */,
 				7ACDA8302C0497C5005720EC /* CarBrandsViewController.swift in Sources */,
 				7ACDA8442C049BF9005720EC /* CarDetailsViewController.swift in Sources */,
-				7ACDA8502C04A99F005720EC /* CarDetailsPriceCalculator.swift in Sources */,
 				7ACDA82C2C0497C5005720EC /* AppDelegate.swift in Sources */,
 				7ACDA82E2C0497C5005720EC /* SceneDelegate.swift in Sources */,
 				7ACDA84C2C04A4B8005720EC /* CarDataStore.swift in Sources */,

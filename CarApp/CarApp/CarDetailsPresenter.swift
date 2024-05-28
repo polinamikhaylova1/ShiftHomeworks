@@ -1,7 +1,7 @@
 import Foundation
 
 protocol CarDetailsPresenterProtocol {
-    func loadCarDetails()
+    func loadCarDetails(view:CarDetailsViewProtocol )
     func bodyTypeDidChange(to bodyType: String)
     func calculatePrice()
 }
@@ -13,18 +13,17 @@ class CarDetailsPresenter: CarDetailsPresenterProtocol {
     private var currentBodyType: String?
     private var car: Car
     
-    init(view: CarDetailsViewProtocol, model: CarDetailsModelProtocol, car: Car) {
-        self.view = view
+    init(view: CarDetailsViewProtocol?, model: CarDetailsModelProtocol, car: Car) {
         self.model = model
         self.car = car
     }
     
-    func loadCarDetails() {
+    func loadCarDetails(view:CarDetailsViewProtocol ) {
+        self.view = view
         currentBodyType = car.images.keys.first
-        view?.showCarDetails(car)
-           
+        view.showCarDetails(car)
         if let defaultBodyType = currentBodyType, let price = car.prices[defaultBodyType] {
-            view?.updatePrice(price)
+            view.updatePrice(price)
         }
     }
     

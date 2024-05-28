@@ -14,12 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        
-        let carBrandsViewController = CarBrandsViewController()
         let carBrandsModel = CarBrandsModel()
-        let carBrandsPresenter = CarBrandsPresenter(view: carBrandsViewController, model: carBrandsModel)
-        carBrandsViewController.presenter = carBrandsPresenter
+        let carBrandsPresenter = CarBrandsPresenter(view: nil, model: carBrandsModel)
+        let carBrandsViewController = CarBrandsViewController(presenter: carBrandsPresenter)
+        
+        
                 
         let navigationController = UINavigationController(rootViewController: carBrandsViewController)
                 

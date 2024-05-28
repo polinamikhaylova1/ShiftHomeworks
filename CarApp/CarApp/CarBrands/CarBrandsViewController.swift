@@ -6,14 +6,26 @@ protocol CarBrandsViewProtocol: AnyObject {
 }
 
 class CarBrandsViewController: UIViewController {
-    var presenter: CarBrandsPresenterProtocol!
-    var tableView: UITableView!
-    var cars: [Car] = []
+    private var presenter: CarBrandsPresenterProtocol
+    private var tableView: UITableView
+    private var cars: [Car] = []
+
+    init(presenter: CarBrandsPresenterProtocol) {
+        self.presenter = presenter
+        self.tableView = UITableView()
+        super.init(nibName: nil, bundle: nil)
+        setupTableView()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        presenter.loadCarBrands()
+        presenter.loadCarBrands(view: self)
     }
     
     private func setupTableView() {
@@ -32,11 +44,15 @@ extension CarBrandsViewController: CarBrandsViewProtocol {
     }
     
     func navigateToCarDetails(with car: Car) {
-        let carDetailsVC = CarDetailsViewController()
-        let carDetailsModel = CarDetailsModel()
-        let carDetailsPresenter = CarDetailsPresenter(view: carDetailsVC, model: carDetailsModel, car: car)
-        carDetailsVC.presenter = carDetailsPresenter
+        let carDetailsVC = createCarDetailsViewController(with: car)
         navigationController?.pushViewController(carDetailsVC, animated: true)
+    }
+
+    private func createCarDetailsViewController(with car: Car) -> CarDetailsViewController {
+        let carDetailsModel = CarDetailsModel()
+        let presenter = CarDetailsPresenter(view: nil, model: carDetailsModel, car: car)
+        let carDetailsVC = CarDetailsViewController(presenter: presenter)
+        return carDetailsVC
     }
 }
 
