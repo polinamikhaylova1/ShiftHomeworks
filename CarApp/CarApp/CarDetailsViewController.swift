@@ -32,8 +32,7 @@ class CarDetailsViewController: UIViewController, CarDetailsViewProtocol {
         self.calculatePriceButton = UIButton(type: .system)
             
         super.init(nibName: nil, bundle: nil)
-            
-        setupUI()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -91,7 +90,7 @@ extension CarDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BodyTypeCell", for: indexPath)
-        _ = bodyTypes[indexPath.row]
+        cell.textLabel?.text = bodyTypes[indexPath.row] 
         return cell
     }
     

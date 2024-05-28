@@ -21,6 +21,7 @@ class CarDetailsPresenter: CarDetailsPresenterProtocol {
     func loadCarDetails(view:CarDetailsViewProtocol ) {
         self.view = view
         currentBodyType = car.images.keys.first
+        view.hideLoading()
         view.showCarDetails(car)
         if let defaultBodyType = currentBodyType, let price = car.prices[defaultBodyType] {
             view.updatePrice(price)
