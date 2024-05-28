@@ -28,8 +28,7 @@ final class DetailViewController: UIViewController, DetailView {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailView.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        presenter.viewDidLoad()
-        presenter.view = self
+        presenter.didLoad(view: self)
 
     }
     
