@@ -1,6 +1,7 @@
 import UIKit
 
 protocol CarDetailsViewProtocol: AnyObject {
+    
     func showLoading()
     func hideLoading()
     func showCarDetails(_ car: Car)
@@ -42,12 +43,12 @@ class CarDetailsViewController: UIViewController, CarDetailsViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        presenter.loadCarDetails(view: self)
+        presenter.didLoadCarDetails(view: self)
     }
     
 
     @objc func calculatePriceButtonTapped() {
-        presenter.calculatePrice()
+        presenter.calculatePriceButtonTapped()
     }
     
     func showLoading() {
@@ -59,19 +60,10 @@ class CarDetailsViewController: UIViewController, CarDetailsViewProtocol {
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
     }
-    
+ 
     func showCarDetails(_ car: Car) {
-        self.car = car
-        self.bodyTypes = Array(car.images.keys)
+        bodyTypes = Array(car.images.keys)
         bodyTypeTableView.reloadData()
-        
-        if let defaultBodyType = bodyTypes.first {
-            updateImage(car.images[defaultBodyType]!)
-            presenter.bodyTypeDidChange(to: defaultBodyType)
-            if let price = car.prices[defaultBodyType] {
-                updatePrice(price)
-            }
-        }
     }
     
     func updatePrice(_ price: Double) {
