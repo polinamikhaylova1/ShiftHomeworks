@@ -7,14 +7,15 @@ protocol CarBrandsViewProtocol: AnyObject {
 
 class CarBrandsViewController: UIViewController {
     private var presenter: CarBrandsPresenterProtocol
-    private var tableView: UITableView
+    private var chooseLabel = UILabel()
+    private var chooseBrandLabel = UILabel()
+    private var tableView = UITableView()
     private var cars: [Car] = []
-
+    
     init(presenter: CarBrandsPresenterProtocol) {
         self.presenter = presenter
-        self.tableView = UITableView()
         super.init(nibName: nil, bundle: nil)
-        setupTableView()
+        setupUI()
     }
 
     required init?(coder: NSCoder) {
@@ -24,17 +25,11 @@ class CarBrandsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        setupUI()
         presenter.loadCarBrands(view: self)
     }
     
-    private func setupTableView() {
-        tableView = UITableView(frame: view.bounds)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BrandCell")
-        view.addSubview(tableView)
-    }
+    
 }
 
 extension CarBrandsViewController: CarBrandsViewProtocol {
@@ -46,12 +41,15 @@ extension CarBrandsViewController: CarBrandsViewProtocol {
     func navigateToCarDetails(with car: Car) {
         let carDetailsVC = createCarDetailsViewController(with: car)
         navigationController?.pushViewController(carDetailsVC, animated: true)
+        navigationController?.navigationBar.tintColor = UIColor(red: 0.0/255.0, green: 158.0/255.0, blue: 105.0/255.0, alpha: 1.0)
     }
 
     private func createCarDetailsViewController(with car: Car) -> CarDetailsViewController {
         let carDetailsModel = CarDetailsModel()
         let presenter = CarDetailsPresenter(view: nil, model: carDetailsModel, car: car)
         let carDetailsVC = CarDetailsViewController(presenter: presenter)
+        
+        
         return carDetailsVC
     }
 }
@@ -64,6 +62,7 @@ extension CarBrandsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BrandCell", for: indexPath)
         cell.textLabel?.text = cars[indexPath.row].name
+        
         return cell
     }
     
@@ -71,3 +70,47 @@ extension CarBrandsViewController: UITableViewDataSource, UITableViewDelegate {
         presenter.didSelectCar(at: indexPath.row)
     }
 }
+private extension CarBrandsViewController {
+    func setupUI() {
+        view.backgroundColor = .white
+        chooseLabel = UILabel()
+        chooseLabel.text = "Выберите"
+        chooseLabel.translatesAutoresizingMaskIntoConstraints = false
+        chooseLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        view.addSubview(chooseLabel)
+        
+        chooseBrandLabel = UILabel()
+        chooseBrandLabel.text = "Марку машины"
+        chooseBrandLabel.translatesAutoresizingMaskIntoConstraints = false
+        chooseBrandLabel.font = UIFont.systemFont(ofSize: 24)
+        view.addSubview(chooseBrandLabel)
+        
+        tableView = UITableView(frame: view.bounds)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BrandCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        
+        setupConstraints()
+    }
+
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            chooseLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            chooseLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                
+            chooseBrandLabel.topAnchor.constraint(equalTo: chooseLabel.bottomAnchor, constant: 30),
+            chooseBrandLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            tableView.topAnchor.constraint(equalTo: chooseBrandLabel.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        
+    }
+}
+
+
+

@@ -11,12 +11,12 @@ protocol CarDetailsViewProtocol: AnyObject {
 
 class CarDetailsViewController: UIViewController, CarDetailsViewProtocol {
     
-    private var carImageView: UIImageView
-    private var bodyTypeLabel: UILabel
-    private var bodyTypeTableView: UITableView
-    private var priceLabel: UILabel
-    private var activityIndicator: UIActivityIndicatorView
-    private var calculatePriceButton: UIButton
+    private var carImageView = UIImageView()
+    private var bodyTypeLabel = UILabel()
+    private var bodyTypeTableView = UITableView()
+    private var priceLabel = UILabel()
+    private var activityIndicator = UIActivityIndicatorView(style: .large)
+    private var calculatePriceButton = UIButton(type: .system)
     
     private var presenter: CarDetailsPresenterProtocol
     private var car: Car?
@@ -25,13 +25,6 @@ class CarDetailsViewController: UIViewController, CarDetailsViewProtocol {
     
     init(presenter: CarDetailsPresenterProtocol) {
         self.presenter = presenter
-        self.carImageView = UIImageView()
-        self.bodyTypeLabel = UILabel()
-        self.bodyTypeTableView = UITableView()
-        self.priceLabel = UILabel()
-        self.activityIndicator = UIActivityIndicatorView(style: .large)
-        self.calculatePriceButton = UIButton(type: .system)
-            
         super.init(nibName: nil, bundle: nil)
         
     }
@@ -83,16 +76,21 @@ extension CarDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BodyTypeCell", for: indexPath)
         cell.textLabel?.text = bodyTypes[indexPath.row] 
+        
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedBodyType = bodyTypes[indexPath.row]
         presenter.bodyTypeDidChange(to: selectedBodyType)
+        
     }
 }
 
 private extension CarDetailsViewController {
+   
+    
     func setupUI() {
         view.backgroundColor = .white
         
@@ -125,8 +123,12 @@ private extension CarDetailsViewController {
         
         calculatePriceButton = UIButton(type: .system)
         calculatePriceButton.setTitle("Рассчитать цену", for: .normal)
+        calculatePriceButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        calculatePriceButton.setTitleColor(.white, for: .normal)
         calculatePriceButton.translatesAutoresizingMaskIntoConstraints = false
         calculatePriceButton.addTarget(self, action: #selector(calculatePriceButtonTapped), for: .touchUpInside)
+        calculatePriceButton.backgroundColor = UIColor(red: 0.0/255.0, green: 158.0/255.0, blue: 105.0/255.0, alpha: 1.0)
+        calculatePriceButton.layer.cornerRadius = 10
         view.addSubview(calculatePriceButton)
         
         setupConstraints()
@@ -154,7 +156,9 @@ private extension CarDetailsViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             calculatePriceButton.topAnchor.constraint(equalTo: bodyTypeTableView.bottomAnchor, constant: 40),
-            calculatePriceButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            calculatePriceButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            calculatePriceButton.widthAnchor.constraint(equalToConstant: 300),
+            calculatePriceButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
