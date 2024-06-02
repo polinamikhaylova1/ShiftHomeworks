@@ -8,47 +8,64 @@ struct DogImageResponse: Decodable {
 
 class DogService {
     let provider = MoyaProvider<DogAPI>()
+    var downloadTasks: [URL: URLSessionDownloadTask] = [:]
+    var progressHandlers: [URL: (Float) -> Void] = [:]
     
-    func fetchImages(for breed: String,progress: @escaping (Float) -> Void, completion: @escaping (Result<[UIImage], Error>) -> Void) {
-            provider.request(.getBreedImages(breed: breed)) { result in
-                switch result {
-                case .success(let response):
-                    do {
-                        let imageResponse = try JSONDecoder().decode(DogImageResponse.self, from: response.data)
-                        self.loadImages(from: imageResponse.message,progress: progress, completion: completion)
-                    } catch {
-                        completion(.failure(error))
-                    }
-                case .failure(let error):
+    func fetchImages(for breed: String, progress: @escaping (Float) -> Void, completion: @escaping (Result<[UIImage], Error>) -> Void) {
+        provider.request(.getBreedImages(breed: breed)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let imageResponse = try JSONDecoder().decode(DogImageResponse.self, from: response.data)
+                    self.loadImages(from: imageResponse.message, progress: progress, completion: completion)
+                } catch {
                     completion(.failure(error))
                 }
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
-    func loadImages(from urls: [String], progress: @escaping (Float) -> Void, completion: @escaping (Result<[UIImage], Error>) -> Void) {
+    }
+    
+    private func loadImages(from urls: [String], progress: @escaping (Float) -> Void, completion: @escaping (Result<[UIImage], Error>) -> Void) {
         let dispatchGroup = DispatchGroup()
         var loadedImages: [UIImage] = []
         let totalImages = urls.count
         var completedImages = 0
-            
+        
         for url in urls {
             dispatchGroup.enter()
             guard let imageURL = URL(string: url) else { continue }
-            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+            
+            let downloadTask = URLSession.shared.downloadTask(with: imageURL) { (location, response, error) in
                 defer { dispatchGroup.leave() }
-                if let data = data, let image = UIImage(data: data) {
+                if let location = location, let data = try? Data(contentsOf: location), let image = UIImage(data: data) {
                     loadedImages.append(image)
                 }
                 completedImages += 1
-                    let currentProgress = Float(completedImages) / Float(totalImages)
-                        DispatchQueue.main.async {
-                            progress(currentProgress)
+                let currentProgress = Float(completedImages) / Float(totalImages)
+                DispatchQueue.main.async {
+                    progress(currentProgress)
                 }
-            }.resume()
-        }
-            
-            dispatchGroup.notify(queue: .main) {
-                completion(.success(loadedImages))
             }
+            downloadTasks[imageURL] = downloadTask
+            progressHandlers[imageURL] = progress
+            downloadTask.resume()
         }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(.success(loadedImages))
+        }
+    }
+    
+    func pauseDownload(for url: URL) {
+        downloadTasks[url]?.cancel { [weak self] (resumeData) in
+            self?.downloadTasks[url] = URLSession.shared.downloadTask(withResumeData: resumeData!)
+            self?.downloadTasks[url]?.resume()
+        }
+    }
+    
+    func resumeDownload(for url: URL) {
+        downloadTasks[url]?.resume()
+    }
 }
-

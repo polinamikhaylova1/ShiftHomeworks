@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
 		7A178FE52C0CA4B800B50188 /* DogApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A178FE42C0CA4B800B50188 /* DogApi.swift */; };
-=======
->>>>>>> 2db840703a2db7059924310292281528dd782aa9
 		7A6B49842C0B057000FF152B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B49832C0B057000FF152B /* AppDelegate.swift */; };
 		7A6B49862C0B057000FF152B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B49852C0B057000FF152B /* SceneDelegate.swift */; };
 		7A6B49882C0B057000FF152B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B49872C0B057000FF152B /* ViewController.swift */; };
@@ -24,10 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
 		7A178FE42C0CA4B800B50188 /* DogApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogApi.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 2db840703a2db7059924310292281528dd782aa9
 		7A6B49802C0B057000FF152B /* NetworkNetworkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkNetworkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6B49832C0B057000FF152B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A6B49852C0B057000FF152B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,10 +70,7 @@
 				7A6B49852C0B057000FF152B /* SceneDelegate.swift */,
 				7A6B49872C0B057000FF152B /* ViewController.swift */,
 				7A6B49A02C0B115000FF152B /* DogService.swift */,
-<<<<<<< HEAD
 				7A178FE42C0CA4B800B50188 /* DogApi.swift */,
-=======
->>>>>>> 2db840703a2db7059924310292281528dd782aa9
 				7A6B498C2C0B057200FF152B /* Assets.xcassets */,
 				7A6B498E2C0B057200FF152B /* LaunchScreen.storyboard */,
 				7A6B49912C0B057200FF152B /* Info.plist */,
@@ -168,10 +159,7 @@
 			files = (
 				7A6B49882C0B057000FF152B /* ViewController.swift in Sources */,
 				7A6B49842C0B057000FF152B /* AppDelegate.swift in Sources */,
-<<<<<<< HEAD
 				7A178FE52C0CA4B800B50188 /* DogApi.swift in Sources */,
-=======
->>>>>>> 2db840703a2db7059924310292281528dd782aa9
 				7A6B49A12C0B115000FF152B /* DogService.swift in Sources */,
 				7A6B49862C0B057000FF152B /* SceneDelegate.swift in Sources */,
 			);

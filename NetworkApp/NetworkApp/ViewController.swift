@@ -6,7 +6,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private var images: [UIImage] = []
     private var cellHeights: [IndexPath: CGFloat] = [:]
     private let dogService = DogService()
-    var progressView: UIProgressView = UIProgressView(progressViewStyle: .default)
+    private var progressView: UIProgressView = UIProgressView(progressViewStyle: .default)
     
     override func viewDidLoad() {
         super.viewDidLoad()
