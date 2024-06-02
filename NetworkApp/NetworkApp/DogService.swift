@@ -10,17 +10,17 @@ class DogService {
     let provider = MoyaProvider<DogAPI>()
     
     func fetchImages(for breed: String,progress: @escaping (Float) -> Void, completion: @escaping (Result<[UIImage], Error>) -> Void) {
-            provider.request(.getBreedImages(breed: breed)) { result in
-                switch result {
+        provider.request(.getBreedImages(breed: breed)) { result in
+            switch result {
                 case .success(let response):
-                    do {
-                        let imageResponse = try JSONDecoder().decode(DogImageResponse.self, from: response.data)
-                        self.loadImages(from: imageResponse.message,progress: progress, completion: completion)
+                do {
+                    let imageResponse = try JSONDecoder().decode(DogImageResponse.self, from: response.data)
+                    self.loadImages(from: imageResponse.message,progress: progress, completion: completion)
                     } catch {
                         completion(.failure(error))
                     }
-                case .failure(let error):
-                    completion(.failure(error))
+                    case .failure(let error):
+                        completion(.failure(error))
                 }
             }
         }
