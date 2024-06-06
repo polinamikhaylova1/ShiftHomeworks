@@ -62,7 +62,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFiel
         cell.imageView?.image = images[indexPath.row]
         
         let imageSize = images[indexPath.row].size
-        let aspectRatio = imageSize.width / imageSize.height
+        let aspectRatio = imageSize.height == 0 ? 1 : imageSize.width / imageSize.height
         let cellWidth = tableView.frame.width
         let cellHeight = cellWidth / aspectRatio
         cellHeights[indexPath] = cellHeight

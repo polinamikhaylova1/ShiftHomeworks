@@ -13,12 +13,13 @@ class DogService {
     var resumeDataDict: [URL: Data] = [:]
     
     func fetchImages(for breed: String, progress: @escaping (Float) -> Void, completion: @escaping (Result<[UIImage], Error>) -> Void) {
-        provider.request(.getBreedImages(breed: breed)) { result in
+        provider.request(.getBreedImages(breed: breed)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 do {
                     let imageResponse = try JSONDecoder().decode(DogImageResponse.self, from: response.data)
-                    self.loadImages(from: imageResponse.message, progress: progress, completion: completion)
+                    loadImages(from: imageResponse.message, progress: progress, completion: completion)
                 } catch {
                     completion(.failure(error))
                 }
@@ -45,8 +46,9 @@ class DogService {
                 defer { dispatchGroup.leave() }
                 if let location = location, let data = try? Data(contentsOf: location), let image = UIImage(data: data) {
                     loadedImages.append(image)
+                    completedImages += 1
                 }
-                completedImages += 1
+                
                 let currentProgress = Float(completedImages) / Float(totalImages)
                 DispatchQueue.main.async {
                     progress(currentProgress)
