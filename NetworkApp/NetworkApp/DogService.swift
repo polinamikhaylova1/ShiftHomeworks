@@ -10,6 +10,7 @@ class DogService {
     let provider = MoyaProvider<DogAPI>()
     var downloadTasks: [URL: URLSessionDownloadTask] = [:]
     var progressHandlers: [URL: (Float) -> Void] = [:]
+    var resumeDataDict: [URL: Data] = [:]
     
     func fetchImages(for breed: String, progress: @escaping (Float) -> Void, completion: @escaping (Result<[UIImage], Error>) -> Void) {
         provider.request(.getBreedImages(breed: breed)) { result in
@@ -32,6 +33,9 @@ class DogService {
         var loadedImages: [UIImage] = []
         let totalImages = urls.count
         var completedImages = 0
+        
+        guard totalImages > 0 else {completion(.success([]))
+            return }
         
         for url in urls {
             dispatchGroup.enter()
@@ -59,10 +63,13 @@ class DogService {
     }
     
     func pauseDownload(for url: URL) {
-        downloadTasks[url]?.cancel { [weak self] (resumeData) in
-            self?.downloadTasks[url] = URLSession.shared.downloadTask(withResumeData: resumeData!)
-            self?.downloadTasks[url]?.resume()
-        }
+        downloadTasks[url]?.cancel(byProducingResumeData: { [weak self] resumeData in
+                guard let self = self else { return }
+                if let resumeData = resumeData {
+                    self.resumeDataDict[url] = resumeData
+                   }
+                self.downloadTasks.removeValue(forKey: url)
+            })
     }
     
     func resumeDownload(for url: URL) {

@@ -1,12 +1,14 @@
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class ViewController: UIViewController {
     private let urlTextField = UITextField()
     private let tableView = UITableView()
     private var images: [UIImage] = []
     private var cellHeights: [IndexPath: CGFloat] = [:]
     private let dogService = DogService()
     private var progressView: UIProgressView = UIProgressView(progressViewStyle: .default)
+    
+    private let const: CGFloat = 10.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
 }
-extension ViewController {
+extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
@@ -94,15 +96,15 @@ private extension ViewController {
     }
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            urlTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            urlTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            urlTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            urlTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: const),
+            urlTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: const),
+            urlTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -const),
             
-            progressView.topAnchor.constraint(equalTo: urlTextField.bottomAnchor, constant: 10),
-            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            progressView.topAnchor.constraint(equalTo: urlTextField.bottomAnchor, constant: const),
+            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: const),
+            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -const),
             
-            tableView.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: const),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
