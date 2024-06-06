@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        if let breed = textField.text, !breed.isEmpty {
+        if let breed = textField.text?.lowercased(), !breed.isEmpty {
             fetchImages(for: breed)
         } else {
             showError("Пожалуйста, введите допустимую породу")
